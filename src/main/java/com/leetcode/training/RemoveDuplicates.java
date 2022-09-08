@@ -1,5 +1,6 @@
 package com.leetcode.training;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -12,22 +13,22 @@ public class RemoveDuplicates {
         int currentValue;
         int aheadValue = 0;
         Set dups = new HashSet();
-        int numToSkip=0;
+        int numToSkip = 0;
+        int newIndex = 0;
         Set newSet = new HashSet();
         for (int i = 0; i < nums.length; i++) {
-//            System.out.println(nums[i]);
-
             currentValue = nums[i];
 
             if (i == 0) {
                 newNums[i] = nums[i];
                 newSet.add(nums[i]);
+                newNums[newIndex] = nums[i];
+                newIndex++;
             } else {
-                if (nums[i] == nums[i - 1]) {
-                    numToSkip = nums[i];
-                } else {
-                    newNums[i] = nums[i];
+                if (nums[i] != nums[i - 1]) {
+                    newNums[newIndex] = nums[i];
                     newSet.add(nums[i]);
+                    newIndex++;
                 }
             }
 
@@ -55,6 +56,8 @@ public class RemoveDuplicates {
 //            newList[newIdx] = "_";
 //        }
         System.out.println(newList);
+        nums = newNums;
+        nums = new int[3];
         return dups.size();
     }
 
@@ -66,6 +69,7 @@ public class RemoveDuplicates {
         int duplicates = removeDuplicates.removeDuplicates(nums);
 
         System.out.println(String.format("Duplicates: " + duplicates));
+        System.out.println("nums: " + Arrays.stream(nums).toArray().toString());
 
     }
 }
