@@ -8,62 +8,33 @@ import java.util.Set;
 public class RemoveDuplicates {
 
     private int removeDuplicates(int[] nums) {
-        String[] newList = new String[nums.length];
-        int[] newNums = new int[nums.length];
-        int currentValue;
-        int aheadValue = 0;
-        Set dups = new HashSet();
-        int numToSkip = 0;
         int newIndex = 0;
-        Set newSet = new HashSet();
+        int duplicates = 0;
         for (int i = 0; i < nums.length; i++) {
-            currentValue = nums[i];
-
             if (i == 0) {
-                newNums[i] = nums[i];
-                newSet.add(nums[i]);
-                newNums[newIndex] = nums[i];
                 newIndex++;
             } else {
                 if (nums[i] != nums[i - 1]) {
-                    newNums[newIndex] = nums[i];
-                    newSet.add(nums[i]);
+                    nums[newIndex] = nums[i];
+//                    if (nums[newIndex] > nums[newIndex + 1]) {
+//                        break;
+//                    }
                     newIndex++;
+                } else {
+                    duplicates++;
                 }
-            }
 
+            }
             if (i == (nums.length - 1)) {
                 break;
             }
-            aheadValue = nums[i + 1];
-
-            if (currentValue == aheadValue) {
-                // duplicate
-                dups.add(Integer.toString(nums[i]));
-            } else {
-
-            }
         }
-        System.out.println(dups);
-        Iterator it = dups.iterator();
-        int newIdx = 0;
-        while (it.hasNext()) {
-            String dupValue = (String) it.next();
-            newList[newIdx] = dupValue;
-            newIdx++;
-        }
-//        while (newIdx < newList.length) {
-//            newList[newIdx] = "_";
-//        }
-        System.out.println(newList);
-        nums = newNums;
-        nums = new int[3];
-        return dups.size();
+        return duplicates;
     }
 
     public static void main(String[] args) {
 
-        int[] nums = {0, 1, 1, 3, 4, 4, 4, 5, 5};
+        int[] nums = {0, 1, 1, 2, 3, 3, 4, 4, 5, 5};
 
         RemoveDuplicates removeDuplicates = new RemoveDuplicates();
         int duplicates = removeDuplicates.removeDuplicates(nums);
