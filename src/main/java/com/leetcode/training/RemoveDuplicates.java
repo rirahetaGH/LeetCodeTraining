@@ -1,9 +1,7 @@
 package com.leetcode.training;
 
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+
 
 public class RemoveDuplicates {
 
@@ -16,9 +14,6 @@ public class RemoveDuplicates {
             } else {
                 if (nums[i] != nums[i - 1]) {
                     nums[newIndex] = nums[i];
-//                    if (nums[newIndex] > nums[newIndex + 1]) {
-//                        break;
-//                    }
                     newIndex++;
                 } else {
                     duplicates++;
@@ -34,7 +29,7 @@ public class RemoveDuplicates {
 
     public static void main(String[] args) {
 
-        int[] nums = {0, 1, 1, 2, 3, 3, 4, 4, 5, 5};
+        int[] nums = {1, 1, 2};
 
         RemoveDuplicates removeDuplicates = new RemoveDuplicates();
         int duplicates = removeDuplicates.removeDuplicates(nums);
