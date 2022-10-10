@@ -8,6 +8,7 @@ public class RemoveDuplicates {
     private int removeDuplicates(int[] nums) {
         int newIndex = 0;
         int duplicates = 0;
+        int initialSize = nums.length;
         for (int i = 0; i < nums.length; i++) {
             if (i == 0) {
                 newIndex++;
@@ -24,7 +25,7 @@ public class RemoveDuplicates {
                 break;
             }
         }
-        return duplicates;
+        return initialSize - duplicates;
     }
 
     public static void main(String[] args) {
