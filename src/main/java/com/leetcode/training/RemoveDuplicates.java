@@ -35,8 +35,7 @@ public class RemoveDuplicates {
         RemoveDuplicates removeDuplicates = new RemoveDuplicates();
         int duplicates = removeDuplicates.removeDuplicates(nums);
 
-        System.out.println(String.format("Duplicates: " + duplicates));
-        System.out.println("nums: " + Arrays.stream(nums).toArray().toString());
-
+        System.out.printf("new length: %d%n", duplicates);
+        System.out.println("nums: " + Arrays.toString(nums));
     }
 }
